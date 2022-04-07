@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/thienthy/NJS101x_01#readme",
   "dependencies": {
+    "body-parser": "^1.20.0",
     "express": "^4.17.3",
     "nodemon": "^1.18.3"
   }
