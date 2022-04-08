@@ -20,7 +20,10 @@
   "homepage": "https://github.com/thienthy/NJS101x_01#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "nodemon": "^1.18.3"
+    "express-handlebars": "^6.0.4",
+    "nodemon": "^1.18.3",
+    "pug": "^3.0.2"
   }
 }
