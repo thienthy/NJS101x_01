@@ -1,3 +1,4 @@
+const { redirect } = require('express/lib/response');
 const Product = require('../models/product');
 
 exports.getProducts = (req, res, next) => {
@@ -37,6 +38,12 @@ exports.getCart = (req, res, next) => {
     pageTitle: 'Your Cart'
   });
 };
+
+exports.postCart = (req, res, next) => {
+  const proId = req.body.productId;
+  console.log(proId);
+  res.redirect('/cart');
+}
 
 exports.getOrders = (req, res, next) => {
   res.render('shop/orders', {
