@@ -23,8 +23,8 @@ exports.getEditProduct = (req, res, next) => {
   if (!editMode) {
     return res.redirect('/');
   }
-  const proId = req.params.productId;
-  Product.findById(proId, product => {
+  const prodId = req.params.productId;
+  Product.findById(prodId, product => {
     if (!product) {
       return res.redirect('/');
     }
@@ -33,18 +33,18 @@ exports.getEditProduct = (req, res, next) => {
       path: '/admin/edit-product',
       editing: editMode,
       product: product
-    })
+    });
   });
 };
 
 exports.postEditProduct = (req, res, next) => {
-  const proId = req.body.productId;
+  const prodId = req.body.productId;
   const updatedTitle = req.body.title;
   const updatedPrice = req.body.price;
   const updatedImageUrl = req.body.imageUrl;
   const updatedDesc = req.body.description;
   const updatedProduct = new Product(
-    proId,
+    prodId,
     updatedTitle,
     updatedImageUrl,
     updatedDesc,
@@ -52,7 +52,7 @@ exports.postEditProduct = (req, res, next) => {
   );
   updatedProduct.save();
   res.redirect('/admin/products');
-}
+};
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll(products => {
@@ -68,4 +68,4 @@ exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   Product.deleteById(prodId);
   res.redirect('/admin/products');
-}
+};
