@@ -11,7 +11,7 @@ class Product {
   }
   save() {
     const db = getDb();
-    let dbOb;
+    let dbOp;
     if (this._id) {
       // Update the product
       dbOp = db
@@ -20,7 +20,7 @@ class Product {
     } else {
       dbOp = db.collection('products').insertOne(this);
     }
-    return db
+    return dbOp
       .then(result => {
         console.log(result);
       })
