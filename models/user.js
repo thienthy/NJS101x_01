@@ -20,7 +20,7 @@ class User {
         // const cartProduct = this.cart.items.findIndex(cp => {
         //     return cp._id === product._id;
         // })
-        const updatedCart = { items: [{ ...product, quantiy: 1 }] };
+        const updatedCart = { items: [{ productId: new ObjectId(product._id), quantiy: 1 }] };
         const db = getDb();
         return db
             .collection('users')
