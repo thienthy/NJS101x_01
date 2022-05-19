@@ -1,0 +1,24 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%>
+
+<div class="d-flex">
+  <div class="mx-auto mt-3">
+    <div class="custom-form">
+      <form action="/attendance/start" method="GET">
+        <button <%= path === '/attendance' ? null : 'disabled' %> class="btn-custom" type="submit">Bắt Đầu Làm Việc</button>
+      </form>
+    </div>
+    <div class="custom-form">
+      <form action="/attendance/end" class="custom-form" method="POST">
+        <button <%= path === '/attendance/workingInfo' ? null : 'disabled' %> class="btn-custom" type="submit">Kết Thúc Làm Việc</button>
+      </form>
+    </div>
+    <div class="custom-form">
+      <form action="/attendance/annualLeave" class="custom-form" method="GET">
+        <button class="btn-custom" type="submit">Nghỉ Phép</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('../includes/end.ejs') %>

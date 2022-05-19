@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%> <%- include('../includes/workTimeButton.ejs') %>
+
+<div>
+  <div class="col text-center">
+    <div class="card card-custom">
+      <h5 class="text-center mb-3">Thông Tin Lương:</h5>
+      <p class="text-center">
+        Salary = salaryScale * 3000000 + (totalOverTime - shortTime) * 200000
+      </p>
+      <form class="form-select-month" action="/workTime/salary" method="POST">
+        <div class="card-text row">
+          <label for="month" class="col-sm-5 col-form-label">Tháng:</label>
+          <div class="col-sm-7">
+            <select class="select-month" name="month" id="month">
+              <option value=""></option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
+        </div>
+        <p class="mt-2">Salary : <%= salary ? salary.salary : '' %></p>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('../includes/end.ejs') %>

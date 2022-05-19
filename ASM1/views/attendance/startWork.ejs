@@ -1,0 +1,51 @@
+<%- include('../includes/head.ejs') %>
+    <%- include('../includes/navigation.ejs') %>
+        <%- include('../includes/attendanceButton.ejs') %>
+            <div class="d-flex attendance">
+                <div class="mx-auto mt-3">
+                    <div class="container card p-3">
+                        <form action="/attendance/start" method="POST">
+                            <div class="row mb-3">
+                                <label for="name" class="col-sm-5 col-form-label">Tên Nhân Viên</label>
+                                <div class="col-sm-7">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="name"
+                                        name="name"
+                                        value="<%= staff.name %>"
+                                        readonly
+                                    />
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="workPlace" class="col-sm-5 col-form-label">Nơi Làm Việc</label>
+                                <div class="col-sm-7">
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="workPlace"
+                                            value="company"
+                                            checked
+                                        />Công ty
+                                    </div>
+                                    <div class="form-check">
+                                        <input
+                                            class="form-check-input"
+                                            type="radio"
+                                            name="workPlace"
+                                            value="home"
+                                        />
+                                        Nhà
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn">Điểm Danh</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <%- include('../includes/end.ejs')%>

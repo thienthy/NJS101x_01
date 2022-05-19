@@ -1,0 +1,47 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%> <%- include('../includes/workTimeButton.ejs') %>
+<div class="container">
+  <h3 class="text-center my-3">Danh Sách Giờ Làm</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Ngày</th>
+          <th scope="col">Giờ Bắt Đầu</th>
+          <th scope="col">Giờ Kết Thúc</th>
+          <th scope="col">Nơi Làm Việc</th>
+          <th scope="col">Tổng Số Giờ Làm Lần Này</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% attendance.forEach(listWork=>{%> <%
+          listWork.workTimes.forEach(workTime=>{%>
+          <td><%=workTime.startTime.toLocaleDateString()%></td>
+          <td><%=workTime.startTime.toLocaleTimeString()%></td>
+          <td><%=workTime.endTime.toLocaleTimeString()%></td>
+          <td><%= workTime.workPlace==='company' ? 'Công Ty' : 'Nhà' %></td>
+          <td><%= workTime.timeWorked %></td>
+        </tr>
+        <% } )%> <% } )%>
+      </tbody>
+    </table>
+
+    <div class="col text-center">
+      <% attendance.forEach(workTime=> {%>
+      <div class="card card-custom">
+        <div class="card-text">
+          Ngày làm việc: <%= workTime.date.toLocaleDateString() %>
+        </div>
+        <div class="card-text">
+          Số Giờ Làm Việc: <%= workTime.totalWorkHours %> Giờ
+        </div>
+        <div class="card-text">
+          Số Giờ Tăng Ca: <%= workTime.overTime %> Giờ
+        </div>
+      </div>
+      <% })%>
+    </div>
+  </div>
+</div>
+<%- include('../includes/end.ejs') %>

@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%> <%- include('../includes/workTimeButton.ejs') %>
+<div class="container">
+  <h3 class="text-center my-3">Danh Sách Đăng Ký Nghỉ Phép</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Ngày</th>
+          <th scope="col">Số Giờ</th>
+          <th scope="col">Tổng Số Ngày Nghỉ</th>
+          <th scope="col">Lý Do</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%annualLeave.forEach(record=> {%>
+          <td scope="col"><%=record.daysLeave%></td>
+          <td scope="col"><%=record.hoursRequested%></td>
+          <td scope="col"><%=record.daysUsed%></td>
+          <td scope="col"><%=record.reason%></td>
+        </tr>
+        <% } )%>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('../includes/end.ejs') %>

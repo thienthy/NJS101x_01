@@ -1,0 +1,72 @@
+<div class="backdrop"></div>
+<header class="main-header">
+  <button id="side-menu-toggle">Menu</button>
+  <nav class="main-header__nav">
+    <a class="main-header__brand" href="/">
+      <img
+        class="main-header__brand-image"
+        src="/image/brand.png"
+        alt="Brand"
+      />
+    </a>
+    <ul class="main-header__item-list">
+      <li class="main-header__item">
+        <a class="<%= path === '/' ? 'active' : '' %>" href="/">TRANG CHỦ</a>
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/attendance' ? 'active' : '' %>"
+          href="/attendance"
+          >CHẤM CÔNG</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          class="<%= path === '/infoStaff' ? 'active' : '' %>"
+          href="/infoStaff"
+          >THÔNG TIN NHÂN VIÊN</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a class="<%= path === '/workTime' ? 'active' : '' %>" href="/workTime"
+          >THÔNG TIN GIỜ LÀM</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a class="<%= path === '/covid' ? 'active' : '' %>" href="/covid"
+          >THÔNG TIN COVID</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<nav class="mobile-nav">
+  <ul class="mobile-nav__item-list">
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/' ? 'active' : '' %>" href="/">TRANG CHỦ</a>
+    </li>
+    <li class="mobile-nav__item">
+      <a
+        class="<%= path === '/attendance' ? 'active' : '' %>"
+        href="/attendance"
+        >CHẤM CÔNG</a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/infoStaff' ? 'active' : '' %>" href="/infoStaff"
+        >THÔNG TIN NHÂN VIÊN</a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/workTime' ? 'active' : '' %>" href="/workTime"
+        >THÔNG TIN GIỜ LÀM</a
+      >
+    </li>
+    <li class="mobile-nav__item">
+      <a class="<%= path === '/covid' ? 'active' : '' %>" href="/covid"
+        >THÔNG TIN COVID</a
+      >
+    </li>
+  </ul>
+</nav>

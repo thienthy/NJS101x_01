@@ -1,0 +1,52 @@
+<%- include('../includes/head.ejs')%> <%- include('../includes/navigation.ejs')
+%>
+<h2 class="text-center my-3 staff-header">Thông Tin Nhân Viên</h2>
+
+<div class="card mb-3 mx-auto" style="max-width: 750px">
+  <form action="/infoStaff/edit" method="POST">
+    <div class="row g-0">
+      <div class="col-md-5 ps-5">
+        <img
+          src="<%= staff.image %>"
+          class="img-fluid rounded-start"
+          alt="staff"
+        />
+      </div>
+      <div class="col-md-7">
+        <div class="card-body ps-5 fs-5">
+          <p class="card-title my-4">
+            <i class="fas fa-id-card"></i>
+            <%=staff._id.toString()%>
+          </p>
+          <p class="card-text my-4">
+            <i class="fas fa-user"></i>
+            <%= staff.name %>
+          </p>
+          <p class="card-text my-4">
+            <i class="fas fa-birthday-cake"></i>
+            <%= staff.dOB.toLocaleDateString() %>
+          </p>
+          <p class="card-text my-4">
+            <i class="fas fa-coins"></i>
+            <%= staff.salaryScale %>
+          </p>
+          <p class="card-text my-4">
+            <i class="fas fa-building"></i>
+            <%= staff.department %>
+          </p>
+          <p class="card-text my-4">
+            <i class="fas fa-calendar-times"></i>
+            <%= staff.annualLeave %> ngày
+          </p>
+          <p class="card-text my-4">
+            <i class="fas fa-portrait"></i>
+            <input type="text" value="<%= staff.image %>" name="image" />
+          </p>
+          <button class="btn" type="submit">Thay đổi hình ảnh</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%- include('../includes/end.ejs')%>

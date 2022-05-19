@@ -1,0 +1,244 @@
+<div class="container center">
+  <div class="d-flex">
+    <div class="mx-auto mt-3">
+      <div class="custom-form">
+        <button
+          type="button"
+          class="btn-custom"
+          data-bs-toggle="modal"
+          data-bs-target="#bodyTemperature"
+          style="min-height: 62px; margin: 5px"
+        >
+          Đăng Ký Thông Tin Thân Nhiệt
+        </button>
+      </div>
+      <div class="custom-form">
+        <button
+          type="button"
+          class="btn-custom"
+          data-bs-toggle="modal"
+          data-bs-target="#vaccineInfo"
+          style="min-height: 62px; margin: 5px"
+        >
+          Đăng Ký Thông Tin Tiêm Vacxin
+        </button>
+      </div>
+      <div class="custom-form">
+        <button
+          type="button"
+          class="btn-custom"
+          data-bs-toggle="modal"
+          data-bs-target="#covidInfection"
+          value="covidInfection"
+          style="min-height: 62px; margin: 5px"
+        >
+          Đăng Ký Thông Tin Dương Tính Covid
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+
+  <div
+    class="modal fade"
+    id="bodyTemperature"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form action="/covid/temperature" method="POST">
+        <div class="modal-content">
+          <div class="modal-header btn-primary">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Đăng Ký Thông Tin Thân Nhiệt
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-justify">
+            <div class="mb-3">
+              <label for="temperature" class="col-form-label">Nhiệt Độ</label>
+              <input
+                type="number"
+                class="form-control"
+                id="temperature"
+                placeholder="°C"
+                name="temperature"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="dateOfTemperature" class="col-form-label"
+                >Ngày Đo</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="dateOfTemperature"
+                name="dateOfTemperature"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="timeOfTemperature" class="col-form-label"
+                >Giờ Đo</label
+              >
+              <input
+                type="time"
+                class="form-control"
+                id="timeOfTemperature"
+                name="timeOfTemperature"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Thoát
+            </button>
+            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="vaccineInfo"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form action="/covid/vaccine" method="POST">
+        <div class="modal-content">
+          <div class="modal-header btn-primary">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Đăng Ký Thông Tin Vacxin
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-justify">
+            <div class="mb-3">
+              <h3>Mũi 1</h3>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name of vaccine"
+                name="nameOfFirstVaccine"
+                required
+              />
+              <input
+                type="date"
+                class="form-control"
+                name="dateOfFirstVaccine"
+                required
+              />
+            </div>
+            <hr />
+            <div class="mb-3">
+              <h3>Mũi 2</h3>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name of vaccine"
+                name="nameOfSecondVaccine"
+              />
+              <input
+                type="date"
+                class="form-control"
+                name="dateOfSecondVaccine"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Thoát
+            </button>
+            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="covidInfection"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <form action="/covid/infection" method="POST">
+        <div class="modal-content">
+          <div class="modal-header btn-primary">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Đăng Ký for Covid-19 infection
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body text-justify">
+            <div class="mb-3">
+              <h3>Ngày Nhiễm Covid</h3>
+              <input
+                type="date"
+                class="form-control"
+                name="infectedDate"
+                required
+              />
+            </div>
+            <hr />
+            <div class="mb-3">
+              <h3>Ngày Khỏi Bệnh</h3>
+              <input type="date" class="form-control" name="recoverDate" />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Thoát
+            </button>
+            <button type="submit" class="btn btn-primary">Đăng Ký</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Search InfoCovid -->
+
+  <hr />
+  <div class="text-center">
+    <form action="/covid/information" method="GET">
+      <button type="submit" class="btn">Tra Cứu Thông Tin</button>
+    </form>
+  </div>
+</div>

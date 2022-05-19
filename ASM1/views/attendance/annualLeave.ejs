@@ -1,0 +1,83 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%> <%- include('../includes/attendanceButton.ejs') %>
+<div class="d-flex">
+  <div class="mx-auto mt-3">
+    <div class="container card p-3">
+      <div class="form-leave">
+        <%if (staff.annualLeave==0) { %>
+        <h2>Bạn Đã Hết Số Ngày Nghỉ</h2>
+        <a href="/attendance">Quay Lại</a>
+      </div>
+      <% } else { %>
+      <form action="/attendance/leaveForm" method="POST">
+        <h3 class="text-center">Bảng Xin Nghỉ Phép</h3>
+        <div class="row mb-2">
+          <label for="daysLeft" class="col-sm-5 col-form-label"
+            >Số Ngày Nghỉ Còn Lại:</label
+          >
+          <div class="col-sm-7 annualLeave-col-custom">
+            <input
+              type="text"
+              class="form-control"
+              id="daysLeft"
+              name="daysLeft"
+              value="<%=staff.annualLeave%>"
+              readonly
+            />
+          </div>
+        </div>
+        <div class="row mb-2">
+          <label for="daysLeave" class="col-sm-5 col-form-label mb-1"
+            >Chọn Ngày Nghỉ:</label
+          >
+          <div class="col-sm-7 mb-1">
+            <input
+              type="text"
+              class="form-control"
+              id="daysLeave"
+              name="daysLeave"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <label for="workPlace" class="col-sm-5 col-form-label"
+            >Số Giờ Nghỉ (Tối Đa 8 Giờ):</label
+          >
+          <div class="col-sm-7 annualLeave-col-custom">
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="hoursLeave"
+                value="4"
+                checked
+              />4h
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="hoursLeave"
+                value="8"
+              />8h
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <label for="reason" class="col-sm-5 col-form-label">Lý do:</label>
+          <div class="col-sm-7">
+            <textarea
+              class="form-control"
+              id="reason"
+              name="reason"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+        <button class="btn" type="submit">Gửi</button>
+      </form>
+      <%}%>
+    </div>
+  </div>
+</div>
+<%- include('../includes/end.ejs')%>
