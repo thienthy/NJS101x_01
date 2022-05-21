@@ -85,8 +85,11 @@ exports.postSalary = async (req, res) => {
         listDayLeave.forEach((day) => {
           if (day.monthLeave + 1 == month) {
             if (i == day.dayStartLeave) {
-              timeAnnualLeave = day.timesLeave;
-              timeWorkInDay = timeWorkInDay - day.timesLeave;
+              if (day.timesLeave == 8) {
+                timeWorkInDay = 0;
+              } else if (day.timesLeave == 4) {
+                timeWorkInDay = 4;
+              }
             }
           }
         });
@@ -118,7 +121,6 @@ exports.postSalary = async (req, res) => {
             ? 0
             : 8 - (timeWorkInDay + timeAnnualLeave);
       }
-
       const getSalary =
         staff.salaryScale * 3000000 + (totalOverTime - shortTime) * 200000;
 
