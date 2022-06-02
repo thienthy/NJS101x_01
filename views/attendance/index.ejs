@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%>
+<% if (confirmed) { %>
+  <h2 class="text-center mt-4">Tháng Này Bạn Đã Được Tính Lương</h2>
+  <% } else { %>
+  <div class="d-flex">
+    <div class="mx-auto mt-3">
+      <div class="custom-form">
+        <form action="/attendance/start" method="GET">
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+          <button <%= path === '/attendance' ? null : 'disabled' %> class="btn-custom" type="submit">Bắt Đầu Làm Việc</button>
+        </form>
+      </div>
+      <div class="custom-form">
+        <form action="/attendance/end" class="custom-form" method="POST">
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+          <button <%= path === '/attendance/workingInfo' ? null : 'disabled' %> class="btn-custom" type="submit">Kết Thúc Làm Việc</button>
+        </form>
+      </div>
+      <div class="custom-form">
+        <form action="/attendance/annualLeave" class="custom-form" method="GET">
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+          <button  class="btn-custom" type="submit">Nghỉ Phép</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+    <h2 class="index__title">Xin Chào!!!</h3>
+    <p>Mời Bạn Bắt Đầu Làm Việc</p>
+  </div>
+  <% } %>
+
+<%- include('../includes/end.ejs') %>

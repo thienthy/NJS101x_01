@@ -1,0 +1,58 @@
+<%- include('../includes/head.ejs')%> <%-
+include('../includes/navigation.ejs')%> <%-
+include('../includes/attendanceButton.ejs') %>
+
+<div class="d-flex">
+  <div class="mx-auto mt-3">
+    <div class="container card p-3">
+      <h5 class="text-center mb-3">Ngày Làm Việc: <%= attendance.date %></h5>
+      <div class="row mb-3">
+        <label for="name" class="col-sm-5 col-form-label">Tên Nhân Viên:</label>
+        <div class="col-sm-7">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            value="<%= attendance.name %>"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="workPlace" class="col-sm-5 col-form-label"
+          >Nơi Làm Việc:</label
+        >
+        <div class="col-sm-7">
+          <input
+            type="text"
+            class="form-control"
+            id="workPlace"
+            value="<%= startWork.workPlace === 'home' ? 'Nhà' : 'Công Ty' %>"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="startTime" class="col-sm-5 col-form-label"
+          >Giờ Bắt Đầu:</label
+        >
+        <div class="col-sm-7">
+          <input
+            type="text"
+            class="form-control"
+            id="startTime"
+            value="<%= startWork.startTime.toLocaleTimeString() %>"
+            readonly
+          />
+        </div>
+      </div>
+      <img
+        src="/image/startwork.png"
+        class="img-fluid rounded-start mt-2"
+        alt="staff"
+      />
+    </div>
+  </div>
+</div>
+
+<%- include('../includes/end.ejs')%>

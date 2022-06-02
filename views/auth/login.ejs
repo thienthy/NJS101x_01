@@ -1,0 +1,50 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%>
+
+<div class="d-flex">
+  <div class="mx-auto mt-5">
+    <div class="container card p-3">
+      <% if (errorMessage) { %>
+      <div class="user-message user-message--error"><%= errorMessage %></div>
+      <% } %>
+      <form action="/login" method="POST">
+        <div class="row mb-3">
+          <label for="userName" class="col-sm-5 col-form-label">Username</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              name="userName"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="password" class="col-sm-5 col-form-label">Password</label>
+          <div class="col-sm-7">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+            />
+          </div>
+        </div>
+        <div class="text-center">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <button class="btn" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="d-flex">
+  <div class="mx-auto mt-5">
+    <div class="container card p-3">
+      <p>Username: manager --- Password: 12345</p>
+      <p>Username: staff --- Password: 12345</p>
+      <p>Username: staff1 --- Password: 12345</p>
+    </div>
+  </div>
+</div>
+<%- include('../includes/end.ejs') %>

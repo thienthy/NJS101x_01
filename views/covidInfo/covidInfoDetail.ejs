@@ -1,0 +1,128 @@
+<%-include('../includes/head.ejs') %> <%-include('../includes/navigation.ejs')%>
+<%-include('../includes/covidInfoButton.ejs') %>
+
+<div class="container mt-3">
+  <div class="row">
+    <% covid.forEach(covid=> {%>
+    <hr />
+    <h5 class="mb-3 text-center">Nhân Viên: <%= covid.name %></h5>
+    <div class="col-sm-12 col-md-4 text-center">
+      <div class="container card p-3 mb-2">
+        <h5 class="text-center">Thông Tin Nhiệt Độ</h5>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Nhiệt Độ:</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.bodyTemperature[0].temperature %>°C"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Giờ Đo:</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.bodyTemperature[0].time %>"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Ngày Đo:</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.bodyTemperature[0].date.toLocaleDateString() %>"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 text-center">
+      <div class="container card p-3 mb-2">
+        <h5 class="text-center">Thông Tin Tiêm Vacxin</h5>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Vaccine (Mũi 1):</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.vaccineInfo[0].nameVaccine %>"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Ngày Tiêm:</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.vaccineInfo[0].date.toLocaleDateString() %>"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Vaccine (Mũi 2):</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.vaccineInfo[1].nameVaccine %>"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Ngày Tiêm:</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.vaccineInfo[1].date.toLocaleDateString() %>"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 text-center">
+      <div class="container card p-3 mb-2">
+        <h5 class="text-center">Thông Tin Nhiễm Covid</h5>
+
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label"
+            >Ngày Nhiễm Covid:</label
+          >
+          <div class="col-sm-7">
+            <input type="text" class="form-control" value="<%=
+            covid.infectionCovidInfo[0].dateInfected.toLocaleDateString() %>""
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label for="" class="col-sm-5 col-form-label">Ngày Khỏi Bệnh:</label>
+          <div class="col-sm-7">
+            <input
+              type="text"
+              class="form-control"
+              value="<%= covid.infectionCovidInfo[0].dateRecover.toLocaleDateString() %>"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a
+        class="btn-custom mt-3 mb-4 text-center"
+        href="/covid/information/<%=covid._id%>"
+        >Xuất Trang PDF</a
+      >
+    </div>
+    <% }) %>
+    <hr />
+  </div>
+</div>
+<%- include('../includes/end.ejs') %>

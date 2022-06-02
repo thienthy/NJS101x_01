@@ -1,0 +1,59 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%> <%- include('../includes/attendanceButton.ejs') %>
+
+<div class="container">
+    <div class="row justify-content-start">
+        <div class="card mb-3 mx-auto" style="max-width: 720px">
+            <div class="row g-0">
+                <div class="col-md-5 ps-5 border my-2">
+                    <img
+                        src="/image/endwork.png"
+                        class="img-fluid rounded-start"
+                    />
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body ps-5 fs-5">
+                        <h5 class="card-text">
+                            Ngày làm việc: <%= attendance.date %>
+                        </h5>
+                        <h5 class="card-text">
+                            Số Giờ Đã Làm Hôm Nay: <%= attendance.totalWorkHours %> Giờ
+                        </h5>
+                        <h5 class="card-text">Số Giờ Tăng Ca: <%= attendance.overTime %> Giờ</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    
+	<div class="row">
+        <h5 class="text-center">
+            Danh Sách Các Lượt Làm Việc:
+          </h5>
+		
+		<div class="col text-center">
+            <% attendance.workTimes.forEach(workTime=> {%>
+			<div class="card card-custom">
+				<div class="card-text">
+					Bắt Đầu: <b><%=workTime.startTime.toLocaleTimeString()%></b>
+				</div>
+				<div class="card-text">
+                    Kết Thúc: <b><%=workTime.endTime.toLocaleTimeString()%></b>
+				</div>
+                <div class="card-text">
+                    Nơi Làm Việc: <b><%= workTime.workPlace==='home' ? ' Nhà' : ' Công Ty' %></b>
+				</div>
+                <div class="card-text">
+                    Số Giờ Làm Việc: <b><%= workTime.timeWorked %> Giờ</b>
+				</div>
+			</div>
+            <% })%>
+		</div>
+
+	</div>
+    <hr />
+</div>
+
+  <%- include('../includes/end.ejs')%>
+</div>

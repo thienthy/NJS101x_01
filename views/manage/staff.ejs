@@ -1,0 +1,57 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%>
+
+<div class="container">
+  <h3 class="text-center my-3">Danh Sách Giờ Làm</h3>
+  <h4 class="text-center">Nhân viên: <%= staff.name %></h4>
+  <hr />
+  <div class="table-responsive">
+    <% if (workTimes.length > 0) {%>
+    <div class="col text-center">
+      <% workTimes.forEach(workTime=> {%>
+      <div class="card card-custom">
+        <div class="card-text">Ngày Làm Việc: <%= workTime.date %></div>
+        <div class="card-text">
+          Số Giờ Làm Việc: <%= workTime.totalWorkHours %> Giờ
+        </div>
+        <div class="card-text">
+          Số Giờ Tăng Ca: <%= workTime.overTime %> Giờ
+        </div>
+        <form action="/manageStaff/postDeleteWorkTime" method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <input type="hidden" name="workTime" value="<%= workTime._id %>" />
+          <input type="hidden" name="staffId" value="<%= workTime.staffId %>" />
+          <button class="btn-danger mt-3" type="submit">Xóa</button>
+        </form>
+      </div>
+      <% }) %>
+    </div>
+    <hr />
+    <% if (!isConfirm) { %>
+    <form action="/manageStaff/confirmTimeWork" method="POST">
+      <div class="text-center">
+        <h4 class="mb-3">Chấm Công Nhân Viên Tháng <%= month %></h4>
+        <button class="btn" type="submit">Xác Nhận</button>
+        <input type="hidden" name="staffId" value="<%= staff._id %>" />
+        <input type="hidden" name="month" value="<%= month %>" />
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      </div>
+    </form>
+    <% } else { %>
+    <form action="/manageStaff/cancelConfirmTimeWork" method="POST">
+      <div class="text-center">
+        <h4 class="mb-3">Hủy Bỏ Chấm Công Tháng <%= month %></h4>
+        <button class="btn" type="submit">Hủy Bỏ</button>
+        <input type="hidden" name="staffId" value="<%= staff._id %>" />
+        <input type="hidden" name="month" value="<%= month %>" />
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      </div>
+    </form>
+    <% } %> <%} else { %>
+    <h4 class="text-center">Chưa Có Lượt Làm Trong Tháng Này</h4>
+    <hr />
+    <% } %>
+  </div>
+</div>
+
+<%- include ('../includes/end.ejs')%>

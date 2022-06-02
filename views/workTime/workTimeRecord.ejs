@@ -1,0 +1,68 @@
+<%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
+%> <%- include('../includes/workTimeButton.ejs') %>
+<div class="container">
+  <p>ID Quản Lý: <%=manager._id%></p>
+  <p>Tên Quản Lý: <%=manager.name%></p>
+  <% if (staff.role==='staff' ) { %>
+  <p>Tên Nhân Viên: <%=staff.name%></p>
+  <%}%>
+  <h3 class="text-center my-3">Danh Sách Giờ Làm</h3>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Ngày</th>
+          <th scope="col">Giờ Bắt Đầu</th>
+          <th scope="col">Giờ Kết Thúc</th>
+          <th scope="col">Nơi Làm Việc</th>
+          <th scope="col">Tổng Số Giờ Làm Lần Này</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% attendance.forEach(listWork=>{%> <%
+          listWork.workTimes.forEach(workTime=>{%>
+          <td>
+            <%=workTime.startTime.toLocaleDateString('en-GB', { year: 'numeric',
+            month: '2-digit', day: '2-digit', })%>
+          </td>
+          <td><%=workTime.startTime.toLocaleTimeString()%></td>
+          <td><%=workTime.endTime.toLocaleTimeString()%></td>
+          <td><%= workTime.workPlace==='company' ? 'Công Ty' : 'Nhà' %></td>
+          <td><%= workTime.timeWorked %></td>
+        </tr>
+        <% } )%> <% } )%>
+      </tbody>
+    </table>
+
+    <div class="col text-center">
+      <% attendance.forEach(workTime=> {%>
+      <div class="card card-custom">
+        <div class="card-text">Ngày làm việc: <%= workTime.date %></div>
+        <div class="card-text">
+          Số Giờ Làm Việc: <%= workTime.totalWorkHours %> Giờ
+        </div>
+        <div class="card-text">
+          Số Giờ Tăng Ca: <%= workTime.overTime %> Giờ
+        </div>
+      </div>
+      <% })%>
+    </div>
+  </div>
+</div>
+<div class="d-flex">
+  <div class="pagination mx-auto">
+    <% if (currentPage !== 1 && previousPage !== 1) { %>
+    <a href="?page=1">1</a>
+    <% } %> <% if (hasPreviousPage) { %>
+    <a href="?page=<%= previousPage %>"><%= previousPage %></a>
+    <% } %>
+    <a href="?page=<%= currentPage %>" class="active"><%= currentPage %></a>
+    <% if (hasNextPage) { %>
+    <a href="?page=<%= nextPage %>"><%= nextPage %></a>
+    <% } %> <% if (lastPage !== currentPage && nextPage !== lastPage) { %>
+    <a href="?page=<%= lastPage %>"><%= lastPage %></a>
+    <% } %>
+  </div>
+</div>
+<%- include('../includes/end.ejs') %>
