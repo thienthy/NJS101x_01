@@ -22,6 +22,7 @@ exports.getWorkTimeRecord = async (req, res) => {
   let ITEMS_PER_PAGE = +req.query.rowPerPage || 10; // Set document per page
   const page = +req.query.page || 1;
   let totalItems;
+
   // Find all document and count how many pages
   Attendance.find({ staffId: req.session.staff._id })
     .countDocuments()
@@ -32,15 +33,12 @@ exports.getWorkTimeRecord = async (req, res) => {
         .limit(ITEMS_PER_PAGE);
     })
     .then((attendance) => {
-      if (req.query.rowPerPage) {
-      }
       res.render('workTime/workTimeRecord', {
         path: '/workTime/work',
         pageTitle: 'Work Time Record',
         attendance: attendance,
         staff: staff,
         manager: manager[0],
-        rowPerPage: +req.query.rowPerPage,
         currentPage: page,
         hasNextPage: ITEMS_PER_PAGE * page < totalItems,
         hasPreviousPage: page > 1,

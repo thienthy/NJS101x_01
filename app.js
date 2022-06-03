@@ -127,6 +127,6 @@ app.use(errorController.get404);
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, () => {
   console.log(`Server at http://localhost:${PORT}`);
 });
