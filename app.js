@@ -125,8 +125,6 @@ app.use('/manageStaff', manageStaffRoutes);
 app.use(authRoutes);
 app.use(errorController.get404);
 
-const PORT = process.env.PORT || 8080;
-
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log(`Server at http://localhost:${PORT}`);
 });
