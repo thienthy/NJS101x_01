@@ -1,12 +1,29 @@
 <%- include('../includes/head.ejs') %> <%- include('../includes/navigation.ejs')
 %> <%- include('../includes/workTimeButton.ejs') %>
 <div class="container">
-  <p>ID Quản Lý: <%=manager._id%></p>
-  <p>Tên Quản Lý: <%=manager.name%></p>
-  <% if (staff.role==='staff' ) { %>
-  <p>Tên Nhân Viên: <%=staff.name%></p>
-  <%}%>
-  <h3 class="text-center my-3">Danh Sách Giờ Làm</h3>
+  <hr />
+  <div class="row mx-2">
+    <div class="card col- col-sm-4 p-2 mb-2">
+      <p>ID Quản Lý: <%=manager._id%></p>
+      <p>Tên Quản Lý: <%=manager.name%></p>
+      <% if (staff.role==='staff' ) { %>
+      <p>Tên Nhân Viên: <%=staff.name%></p>
+      <%}%>
+    </div>
+    <div class="col- col-sm-4 mb-2"></div>
+    <div class="card col- col-sm-4 p-2 mb-2">
+      <div class="text-center">
+        <p class="text-center">Chọn Số Dòng Hiển Thị Giờ Làm</p>
+        <div class="grid align-center pagination">
+          <a class="my-1" href="?rowPerPage=20">20 Dòng</a>
+          <a class="my-1" href="?rowPerPage=30">30 Dòng</a>
+          <a class="my-1" href="?rowPerPage=40">40 Dòng</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3 class="text-center mt-2">Danh Sách Giờ Làm</h3>
+
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
@@ -15,39 +32,29 @@
           <th scope="col">Giờ Bắt Đầu</th>
           <th scope="col">Giờ Kết Thúc</th>
           <th scope="col">Nơi Làm Việc</th>
-          <th scope="col">Tổng Số Giờ Làm Lần Này</th>
+          <th scope="col">Tổng Số Giờ Làm</th>
+          <th scope="col">Giờ Tăng Ca</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <% attendance.forEach(listWork=>{%> <%
-          listWork.workTimes.forEach(workTime=>{%>
+          <% attendance.forEach(listWork=>{%>
+          <td><%=listWork.date%></td>
+          <td><%=listWork.workTimes[0].startTime.toLocaleTimeString()%></td>
           <td>
-            <%=workTime.startTime.toLocaleDateString('en-GB', { year: 'numeric',
-            month: '2-digit', day: '2-digit', })%>
+            <%=listWork.workTimes[listWork.workTimes.length-1].endTime.toLocaleTimeString()%>
           </td>
-          <td><%=workTime.startTime.toLocaleTimeString()%></td>
-          <td><%=workTime.endTime.toLocaleTimeString()%></td>
-          <td><%= workTime.workPlace==='company' ? 'Công Ty' : 'Nhà' %></td>
-          <td><%= workTime.timeWorked %></td>
+          <td>
+            <%=
+            listWork.workTimes[listWork.workTimes.length-1].workPlace==='company'
+            ? 'Công Ty' : 'Nhà' %>
+          </td>
+          <td><%= listWork.totalWorkHours %></td>
+          <td><%= listWork.overTime %></td>
         </tr>
-        <% } )%> <% } )%>
+        <% } )%>
       </tbody>
     </table>
-
-    <div class="col text-center">
-      <% attendance.forEach(workTime=> {%>
-      <div class="card card-custom">
-        <div class="card-text">Ngày làm việc: <%= workTime.date %></div>
-        <div class="card-text">
-          Số Giờ Làm Việc: <%= workTime.totalWorkHours %> Giờ
-        </div>
-        <div class="card-text">
-          Số Giờ Tăng Ca: <%= workTime.overTime %> Giờ
-        </div>
-      </div>
-      <% })%>
-    </div>
   </div>
 </div>
 <div class="d-flex">
@@ -65,4 +72,5 @@
     <% } %>
   </div>
 </div>
+
 <%- include('../includes/end.ejs') %>
