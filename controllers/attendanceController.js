@@ -53,7 +53,7 @@ exports.postStartWork = async (req, res) => {
     workTimes: [
       {
         startTime: new Date(),
-        endTime: null,
+        endTime: new Date(),
         workPlace: req.body.workPlace,
         working: true,
         timeWorked: 0,
@@ -73,7 +73,7 @@ exports.postStartWork = async (req, res) => {
       if (newAttendance) {
         const newStartWork = {
           startTime: new Date(),
-          endTime: null,
+          endTime: new Date(),
           workPlace: req.body.workPlace,
           working: true,
           timeWorked: 0,
@@ -139,7 +139,7 @@ exports.postEndWork = (req, res) => {
       // Find last workTimes from last attendance
       const lastStartWork = endWork.workTimes[endWork.workTimes.length - 1];
 
-      if (lastStartWork.endTime === null) {
+      if (lastStartWork.working === true) {
         const startTime = lastStartWork.startTime.getTime();
         const endTime = newEndTime.getTime();
         const timeWorked = hoursDistance(endTime, startTime);

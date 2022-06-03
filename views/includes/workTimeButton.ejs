@@ -2,16 +2,19 @@
   <div class="mx-auto mt-3">
     <div class="custom-form">
       <form action="/workTime/work" method="GET">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <button class="btn-custom" type="submit">Danh Sách Giờ Làm</button>
       </form>
     </div>
     <div class="custom-form">
       <form action="/workTime/annualLeave" method="GET">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <button class="btn-custom" type="submit">Danh Sách Nghỉ Phép</button>
       </form>
     </div>
     <div class="custom-form">
       <form action="/workTime/salary" method="GET">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
         <button class="btn-custom" type="submit">Chi Tiết Lương Tháng</button>
       </form>
     </div>

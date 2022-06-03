@@ -15,6 +15,7 @@ function menuToggleClickHandler() {
 backdrop.addEventListener('click', backdropClickHandler);
 menuToggle.addEventListener('click', menuToggleClickHandler);
 
+// $('input[name="daysLeave"]').daterangepicker();
 // handle picker date
 if ($('input[name="daysLeave"]')) {
   $(function () {
