@@ -126,5 +126,5 @@ app.use(authRoutes);
 app.use(errorController.get404);
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log(`Server at http://localhost:${PORT}`);
+  console.log(`Server is running.`);
 });
